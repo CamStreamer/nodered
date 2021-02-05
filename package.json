@@ -1,5 +1,5 @@
 {
-    "name": "co_api",
+    "name": "camstreamer-api",
     "version": "0.1.0",
     "description": "CamOverlay NodeRed package.",
     "dependencies": {

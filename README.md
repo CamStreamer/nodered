@@ -1,3 +1,15 @@
+# NodeRed boxes
+
+	- enable-stream: enables/disables configured stream of CamStreamer
+	- enable-service: enables/disabls configured service of CamOverlay
+	- update-cg-text: updates selected fields in Custom Graphics service of CO
+	- update-cg-image: updates/repositions background image in Custom Graphics of CO
+	- update-infoticker: updates text in Infoticker service from selected source
+
+## AXIS NodeRed
+
+Now you can run NodeRed also directly on your camera.
+Click [here](https://github.com/aintegration/acaps/tree/master/Node-Red) to get the NodeRed AXIS package.
 
 # How to make Node Red Box in 24 hours or less
 
