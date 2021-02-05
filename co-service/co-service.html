@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('co-service',{
+        category: 'config',
+        defaults: {
+            camera:{value:"", type:"camera-credentials",required:true},
+            serviceID:{value:1,required:true},
+            name: {value:"",required:true},
+        },
+        label: function() {
+            return this.name+" ID="+this.serviceID;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="co-service">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-bookmark"></i> Service name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-camera"><i class="fa fa-bookmark"></i> Camera</label>
+        <input id="node-config-input-camera">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-serviceID"><i class="fa fa-bookmark"></i> ServiceID</label>
+        <input type="text" id="node-config-input-serviceID">
+    </div>
+</script>

@@ -1,0 +1,114 @@
+<script type="text/javascript">
+    RED.nodes.registerType('update-cg-text',{
+        category: 'CamOverlay',
+        color: '#659000',
+        defaults: {
+            name: {value:""},
+            service: {value:"",type:"co-service"},
+            container:{value: ""},
+            fields:{value:[{v:"field1", vt: "str",tx:"",txt:"str"}]}
+        },
+        inputs:1,
+        outputs: 1,
+        icon: "bridge.svg",
+        label: function() {
+            return this.name||"update-cg-text";
+        },
+        oneditprepare: function (){
+            this.editable_list = $("#node-input-container").editableList({
+                addButton: true,
+                addItem: function(container, i, data){
+                    var field = data;
+                    if (!field.hasOwnProperty('v')) {
+                        field = {v:"field1", vt: "str",tx:"",txt:"str"};
+                    }
+                    let fragment = document.createDocumentFragment();
+                    var row1 = $('<div/>',{style:"display:flex;"}).appendTo(fragment);
+                    var row2 = $('<div/>',{style:"display:flex;margin-top:8px;"}).appendTo(fragment);
+                    $('<div/>',{style:"display:inline-block;text-align:right; width:120px; padding-right:10px; box-sizing:border-box;"})
+                        .text("Name")
+                        .appendTo(row1);
+                    var fieldName = $('<input/>',{class:"node-input-field-name",type:"text"})
+                        .appendTo(row1)
+                        .typedInput({types:['str','msg','flow','global']});
+
+                    $('<div/>',{style:"display:inline-block;text-align:right; width:120px; padding-right:10px; box-sizing:border-box;"})
+                        .text("Text")
+                        .appendTo(row2);
+                    var fieldText = $('<input/>',{class:"node-input-field-text",type:"text"})
+                        .appendTo(row2)
+                        .typedInput({types:['str','msg','flow','global']});
+                    fieldName.typedInput('value',field.v);
+                    fieldName.typedInput('type',field.vt);
+                    fieldText.typedInput('value',field.tx);
+                    fieldText.typedInput('type',field.txt);
+
+                    container[0].appendChild(fragment);
+                },
+                removable: true,
+                sortable: true
+            });
+
+            if (!this.fields) {
+                var field = {
+                    v: "field1",
+                    vt: "msg",
+                    tx: "",
+                    txt: "str"
+                };
+
+                this.fields = [field];
+            }
+            for (var i=0; i<this.fields.length; i++) {
+                var field = this.fields[i];
+                $("#node-input-container").editableList('addItem',field);
+            }
+        },
+        oneditsave: function (){
+            var fields = $("#node-input-container").editableList('items');
+            var node = this;
+            node.fields = [];
+            fields.each(function(i) {
+                var field = $(this);
+                var f = {
+                    v: field.find(".node-input-field-name").typedInput('value'),
+                    vt: field.find(".node-input-field-name").typedInput('type'),
+                    tx: field.find(".node-input-field-text").typedInput('value'),
+                    txt: field.find(".node-input-field-text").typedInput('type')
+                };
+                node.fields.push(f);
+            });
+        }
+
+    });
+    /*field:{
+        field_name: name1
+        text: text1
+        [color: color1]
+    }*/
+</script>
+
+<script type="text/html" data-template-name="update-cg-text">
+    <style>
+        ol#node-input-container .red-ui-typedInput-container {
+            flex:1;
+        }
+    </style>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="Something">
+    </div>
+    <div class="form-row">
+       <ol id="node-input-container"></ol>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="update-cg-text">
+    <p>Updates text fields in Custom Graphics service of CamOverlay. Fields are passed in the payload.</p>
+</script>
+
+

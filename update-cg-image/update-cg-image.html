@@ -1,0 +1,87 @@
+<script type="text/javascript">
+    RED.nodes.registerType('update-cg-image',{
+        category: 'CamOverlay',
+        color: '#208a58',
+        defaults: {
+            name: {value:""},
+            service: {value:"",type:"co-service"},
+            coords: {value: "top_left"},
+            pos_x: {value: "0"},
+            pos_y: {value: "0"},
+            path: {value: "payload"},
+            path_type: {value: ""},
+            action: {value: "img"}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "bridge-dash.svg",
+        label: function() {
+            return this.name||"update-cg-image";
+        },
+        oneditprepare: function (){
+            $("#node-input-path").typedInput({
+                type: "msg",
+                types:["msg", "flow","global","str"],
+                typeField: "#node-input-path_type"
+            });
+            $("#node-input-action").on("change", ()=>{
+                if ($("#node-input-action").val() == "img"){
+                    $("#node-something-path").show();
+                }else {
+                    $("#node-something-path").hide();
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="update-cg-image">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="Something">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tag"></i> Action</label>
+        <select type="text" id="node-input-action">
+            <option value="img" selected>Update Image</option>
+            <option value="no_img">Update Position</option>
+        </select>
+    </div>
+    <div class="form-row" id="node-something-path">
+        <label for="node-input-path"><i class="fa fa-tag"></i> Path</label>
+        <input type="text" id="node-input-path" placeholder="payload">
+        <input type="hidden" id="node-input-path_type">
+    </div>
+    <div class="form-row">
+        <label for="node-input-coords"><i class="fa fa-tag"></i> Coordinates</label>
+        <select type="text" id="node-input-coords">
+            <option value="top_left" selected>Top Left</option>
+            <option value="top_center">Top Center</option>
+            <option value="top_right">Top Right</option>
+            <option value="center_left">Left Center</option>
+            <option value="center">Center</option>
+            <option value="center_right">Right Center</option>
+            <option value="bottom_left">Left Bottom</option>
+            <option value="bottom_center">Center Bottom</option>
+            <option value="bottom_right">Right Bottom</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-pos_x"><i class="fa fa-tag"></i> Position X</label>
+        <input type="text" id="node-input-pos_x" placeholder="Something">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pos_y"><i class="fa fa-tag"></i> Position Y</label>
+        <input type="text" id="node-input-pos_y" placeholder="Something">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="update-cg-image">
+    <p>Updates image in Custom Graphics service of CamOverlay.</p>
+</script>
+
+

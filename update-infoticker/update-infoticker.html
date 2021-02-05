@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    RED.nodes.registerType('update-infoticker',{
+        category: 'CamOverlay',
+        color: '#73b21b',
+        defaults: {
+            name: {value:""},
+            service: {value:"",type:"co-service"},
+            text:{value:"payload"},
+            textType: {value:""}
+        },
+        inputs:1,
+        outputs: 1,
+        icon: "bridge.svg",
+        label: function() {
+            return this.name||"update-infoticker";
+        },
+        oneditprepare: function (){
+            $("#node-input-text").typedInput({
+                type: "msg",
+                types:["msg", "flow","global","str"],
+                typeField: "#node-input-textType"
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="update-infoticker">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="Something">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-tag"></i> Text</label>
+        <input type="text" id="node-input-text" placeholder="payload">
+        <input type="hidden" id="node-input-textType">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="update-infoticker">
+    <p>Updates text in Infoticker service of CamOverlay.</p>
+</script>
+
+
