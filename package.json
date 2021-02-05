@@ -1,13 +1,15 @@
 {
     "name": "co_api",
-    "version": "0.0.10",
+    "version": "0.1.0",
     "description": "CamOverlay NodeRed package.",
     "dependencies": {
         "camstreamerlib": "^1.2.3",
         "follow-redirects": "^1.13.0"
     },
     "keywords": [
-        "node-red", "camstreamer", "camoverlay"
+        "node-red",
+        "camstreamer",
+        "camoverlay"
     ],
     "node-red": {
         "nodes": {
