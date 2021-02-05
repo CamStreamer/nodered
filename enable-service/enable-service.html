@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('enable-service',{
+        category: 'CamOverlay',
+        color: '#64faa6',
+        defaults: {
+            name: {value:""},
+            service: {value:"",type:"co-service"},
+            enable: {value: "1"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "serial.svg",
+        label: function() {
+            let prefix = this.enable === "1" ? "enable" : "disable";
+            return this.name||prefix+"-service";
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="enable-service">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-tag"></i> Service</label>
+        <input type="text" id="node-input-service">
+    </div>
+    <div class="form-row">
+        <label for="node-input-enable"><i class="fa fa-tag"></i> Value</label>
+        <select type="text" id="node-input-enable">
+            <option value="1" selected> Enable</option>
+            <option value="0">Disable</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="enable-service">
+    <p>Updates image in Custom Graphics service of CamOverlay.</p>
+</script>
+
+
