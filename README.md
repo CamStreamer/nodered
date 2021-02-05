@@ -1,10 +1,10 @@
 # NodeRed boxes
 
-	- enable-stream: enables/disables configured stream of CamStreamer
-	- enable-service: enables/disabls configured service of CamOverlay
-	- update-cg-text: updates selected fields in Custom Graphics service of CO
-	- update-cg-image: updates/repositions background image in Custom Graphics of CO
-	- update-infoticker: updates text in Infoticker service from selected source
+- enable-stream: enables/disables configured stream of CamStreamer
+- enable-service: enables/disabls configured service of CamOverlay
+- update-cg-text: updates selected fields in Custom Graphics service of CO
+- update-cg-image: updates/repositions background image in Custom Graphics of CO
+- update-infoticker: updates text in Infoticker service from selected source
 
 ## AXIS NodeRed
 

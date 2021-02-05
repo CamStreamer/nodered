@@ -1,5 +1,5 @@
 {
-    "name": "camstreamer-api",
+    "name": "co-api",
     "version": "0.1.1",
     "description": "CamOverlay NodeRed package.",
     "dependencies": {
@@ -7,9 +7,7 @@
         "follow-redirects": "^1.13.0"
     },
     "keywords": [
-        "node-red",
-        "camstreamer",
-        "camoverlay"
+        "node-red"
     ],
     "node-red": {
         "nodes": {
@@ -20,8 +18,7 @@
             "enable-stream": "enable-stream/enable-stream.js",
             "camera-credentials": "camera-credentials/camera-credentials.js",
             "co-service": "co-service/co-service.js",
-            "cst-service": "cst-service/cst-service.js",
-            "lower-case": "lower-case/lower-case.js"
+            "cst-service": "cst-service/cst-service.js"
         }
     }
 }
