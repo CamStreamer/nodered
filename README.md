@@ -21,8 +21,6 @@ package.json should also have a property "node-red" which contains object with p
 "nodes" then contains object containing relative paths to .js files of each node referenced by name of each node.
 It is not clear yet to the author of this documentation how this translates to actual functionality.
 
-
-
 ### AXIS Node-Red Testing
 
 While on computer one can use npm utility to install one's own node-red packages localy but when running Node-Red on Axis camera, no such option is available.
